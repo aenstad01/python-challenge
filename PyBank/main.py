@@ -7,6 +7,7 @@ import csv
 csvpath = os.path.join("..", "PyBank", "Resources", "02-Homework_03-Python_Instructions_PyBank_Resources_budget_data.csv")
 results = os.path.join("..", "PyBank", "analysis", "output.txt")
 
+
 #Find out how many months (rows) are in the CSV, subtracting the header row. Then, print Total Months.
 with open(csvpath) as csvfile:
     csvreader = csv.reader(csvfile, delimiter=",")
@@ -63,11 +64,13 @@ with open(csvpath) as csvfile:
     
     average = Average(average_change)
 
+
     #Find the maximum & minimum of the "average_change" list
     greatest_increase = int(max(average_change))
     greatest_decrease = int(min(average_change))
 
-#Find the date the greatest increase & decrease happened on
+
+    ######Loop through the CSV once again to find the dates that the greatest increase/decrease are associated to
 
     #Find what line the greatest increase happened on
     index = average_change.index(int(greatest_increase))
@@ -85,7 +88,7 @@ output = (
     f"Financial Analysis\n"
     f"----------------------------\n"
     f"Total Months: {total_months}\n"
-    f"Total: ${total_profit:.0f}\n"
+    f"Total: $ {total_profit:.0f}\n"
     f"Average  Change: ${average:.2f}\n" 
     f"Greatest Increase in Profits: {greatest_increase_date} ({greatest_increase})\n"
     f"Greatest Decrease in Profits: {greatest_decrease_date} ({greatest_decrease})")
